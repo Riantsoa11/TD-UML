@@ -12,7 +12,7 @@ class Etagere;
 class Bibliotheque {     
 private:
     Livre* livres;        
-    std::string name;     
+    std::string name;  
     Etagere* etageres;    
     int nbEtageres;       
     int capaciteEtageres; 

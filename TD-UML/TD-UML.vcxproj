@@ -139,6 +139,9 @@
     <ClInclude Include="genre.h" />
     <ClInclude Include="livre.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="Methode.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

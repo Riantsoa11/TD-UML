@@ -4,26 +4,6 @@
 #include "etagere.h"
 #include "bibliotheque.h"
 
-// Fonction pour trier les livres par ordre alphabétique en utilisant un tri par insertion
-void trierLivres(Livre* livres[], int nbLivres) {
-    // Tri par insertion
-    for (int i = 1; i < nbLivres; ++i) {
-        // Livre actuel
-        Livre* livreActuel = livres[i];
-        // Comparaison des titres des livres
-        int j = i - 1;
-        // Utilisation de strcmp pour comparer les titres
-        while (j >= 0 && livres[j]->getTitre() > livreActuel->getTitre()) 
-        {
-            // Déplace les livres vers la droite
-            livres[j + 1] = livres[j];
-            j--;
-        }
-        // Insère le livre actuel à la bonne position
-        livres[j + 1] = livreActuel;
-    }
-}
-
 int main() {
     // Nom de la bibliothèque
     std::string name = "CDI";
@@ -60,26 +40,13 @@ int main() {
     genreFiction->placeLivre(*livre3); // Place un autre livre dans le genre Fiction
     genreFiction->placeLivre(*livre4); // Place un autre livre dans le genre Fiction
 
-    // Création de tableaux de pointeurs pour trier les livres
-    Livre* livresRoman[] = { livre1, livre2 };
-    Livre* livresFiction[] = { livre3, livre4 };
-
-    // Tri des livres par ordre alphabétique
-    trierLivres(livresRoman, 2);
-    trierLivres(livresFiction, 2);
-
     // Affichage des livres triés pour le genre Roman
     std::cout << "Livres disponibles dans le genre Roman sur l'etagere " << etagere1->getNom() << " :\n";
-    for (int i = 0; i < 2; ++i) {
-        std::cout << livresRoman[i]->getTitre() << std::endl;
-    }
+    std::cout << genreRoman->meslivres() << std::endl;
 
     // Affichage des livres triés pour le genre Fiction
     std::cout << "Livres disponibles dans le genre Fiction sur l'etagere " << etagere2->getNom() << " :\n";
-    for (int i = 0; i < 2; ++i) {
-        std::cout << livresFiction[i]->getTitre() << std::endl;
-    }
+    std::cout << genreFiction->meslivres() << std::endl;
 
     return 0; // Indique que le programme s'est exécuté avec succès
 }
-

@@ -1,0 +1,4 @@
+Genre : Genre, rang Livre, place Livre,
+Etagere : Etagere, getNom(etagere), setGenre
+Livre : Livre, getTitre(livre)
+bibliotheque: Bibliotheque , setEtagere,nouveauLivre

@@ -12,45 +12,38 @@ Genre::Genre(std::string libelleGenre, Etagere* uneEtagere) {
     
     this->capaciteMax = 1000;
     this->nbLivres = 0;
-    this->Leslivres = new Livre[capaciteMax];    
-
+    this->Leslivres = new Livre[capaciteMax];  // Alloue un tableau dynamique pour les livres
 }
 
-// Méthode pour déterminer le rang d'un livre basé sur son titre
+// Méthode pour déterminer le rang d'un livre et faire le tri
 int Genre::rangLivre(std::string titreLivre) 
 {
-    int i = 0;          // Initialisation de l'index pour parcourir le tableau
-    int rang = 0;      // Initialisation de la variable pour stocker le rang du livre
+    int i = 0;
 
-    // Boucle pour parcourir le tableau des livres
-    while (i < sizeof(Leslivres)) {
-        if (Leslivres[i].getTitre() < titreLivre) { // Compare le titre du livre courant avec 'titreLivre'
-            rang = i;  // Met à jour le rang si le titre courant est inférieur
-        }
-        if (Leslivres[i].getTitre() == titreLivre) { // Si le titre courant correspond à 'titreLivre'
-            rang = i;  // Met à jour le rang au même index
-        }
-        i++;  
+    // Parcourt la liste des livres pour trouver la position correcte d'insertion
+    while (i < nbLivres && Leslivres[i].getTitre() < titreLivre) {
+        i++;
     }
-    return rang; // Retourne le rang déterminé
+
+    return i; // Retourne la position à laquelle le livre devrait être inséré
 }
 
 // Méthode pour placer un livre dans le genre
 void Genre::placeLivre(Livre unLivre) 
 {
     if (nbLivres < capaciteMax) {
-        // Trouver la position correcte pour l'insertion
-        int i = nbLivres - 1;
-        while (i >= 0 && Leslivres[i].getTitre() > unLivre.getTitre()) {
-            // Décalage des livres vers la droite pour faire de la place
-            Leslivres[i + 1] = Leslivres[i];
-            i--;
+        // Trouver la position correcte pour insérer le livre (rang)
+        int rang = rangLivre(unLivre.getTitre());
+
+        // Décaler les livres pour faire de la place au nouvel élément
+        for (int i = nbLivres; i > rang; i--) {
+            Leslivres[i] = Leslivres[i - 1];
         }
-        // Insérer le nouveau livre à la position correcte
-        Leslivres[i + 1] = unLivre;
-        nbLivres++; // Incrémenter le nombre de livres
+
+        // Insérer le nouveau livre dans le tableau trié
+        Leslivres[rang] = unLivre;
+        nbLivres++; // Incrémente le nombre de livres
     }
-    // Affiche un message d'erreur si la capacité maximale est atteinte
     else {
         std::cout << "Capacité maximale de livres atteinte dans le genre !" << std::endl;
     }
@@ -66,4 +59,4 @@ std::string Genre::meslivres()
     return listeLivres; // Retourne la chaîne de caractères contenant les titres des livres
 }
 
-#endif 
+#endif
