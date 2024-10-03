@@ -23,8 +23,14 @@ public:
     // Constructeur de la classe Genre
     Genre(std::string libelleGenre = "", Etagere* uneEtagere = NULL); // Initialise le genre avec un libellé et une étagère (par défaut vide ou NULL)
 
+
     // Méthode pour afficher ou retourner la liste des livres
     std::string meslivres();  
+
+    // Méthode pour obtenir le libellé du genrew
+    std::string getLibelle() {
+        return libelle;
+    } 
 
     // Méthode pour placer un livre dans le genre
     void placeLivre(Livre unLivre);  // Ajoute un livre à ce genre

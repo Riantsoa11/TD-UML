@@ -21,6 +21,8 @@ public:
     // Constructeur de la classe Bibliotheque
     Bibliotheque(std::string name = "", int capaciteEtageres = 10); // Initialise la bibliothèque avec un nom et une capacité d'étagères
 
+    Livre* nouveauLivre(std::string titre,std::string genre); // Méthode pour ajouter un nouveau livre
+
     // Méthode pour ajouter une étagère
     void setEtagere(Etagere& etagere);  // Passe l'étagère par référence pour éviter les copies inutiles
 };

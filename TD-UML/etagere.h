@@ -22,11 +22,13 @@ private:
 public:
     // Constructeur pour initialiser l'étagère avec un nom et une capacité
     Etagere(std::string nom = "", int capacite = 10);
-
     std::string getNom();
-
+    std::string mesGenres();
     //methode pour ajouter un  genre à l'etagere
     void setGenre(Genre genre);
+
+    //Methode pour obtenir le genre associé à l'etagere
+    Genre* getGenre();
 };
 
 #endif

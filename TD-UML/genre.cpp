@@ -9,14 +9,13 @@
 Genre::Genre(std::string libelleGenre, Etagere* uneEtagere) {
     this->libelle = libelleGenre;        // Initialise le libellé du genre avec le paramètre 'libelleGenre'
     this->uneEtagere = uneEtagere;        // Initialise le pointeur vers l'étagère associée au genre
-    
     this->capaciteMax = 1000;
     this->nbLivres = 0;
     this->Leslivres = new Livre[capaciteMax];  // Alloue un tableau dynamique pour les livres
 }
 
 // Méthode pour déterminer le rang d'un livre et faire le tri
-int Genre::rangLivre(std::string titreLivre) 
+int Genre::rangLivre(std::string titreLivre)
 {
     int i = 0;
 
@@ -29,7 +28,7 @@ int Genre::rangLivre(std::string titreLivre)
 }
 
 // Méthode pour placer un livre dans le genre
-void Genre::placeLivre(Livre unLivre) 
+void Genre::placeLivre(Livre unLivre)
 {
     if (nbLivres < capaciteMax) {
         // Trouver la position correcte pour insérer le livre (rang)

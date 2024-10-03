@@ -1,4 +1,62 @@
-Genre : Genre, rang Livre, place Livre,
-Etagere : Etagere, getNom(etagere), setGenre
+Genre : Genre, rangLivre, placeLivre,mesLivres
+Etagere : Etagere, getNom(etagere), setGenre,getGenre,mesGenres
 Livre : Livre, getTitre(livre)
 bibliotheque: Bibliotheque , setEtagere,nouveauLivre
+
+
+
+/*
+#include <iostream>
+#include "livre.h"
+#include "genre.h"
+#include "etagere.h"
+#include "bibliotheque.h"
+
+int main() {
+    // Nom de la bibliothèque
+    std::string name = "CDI";
+    std::cout << "Ma Bibliothèque : " << name << std::endl;
+
+    // Création de la bibliothèque avec des étagères
+    Bibliotheque uneBibliotheque(name);
+
+    // Création des étagères
+    Etagere* uneEtagereDe1000Livres1 = new Etagere("Etagere 1", 10);
+    Etagere* uneEtagereDe1000Livres2 = new Etagere("Etagere 2", 10);
+
+    // Ajout des étagères à la bibliothèque
+    uneBibliotheque.setEtagere(*uneEtagereDe1000Livres1);
+    uneBibliotheque.setEtagere(*uneEtagereDe1000Livres2);
+
+    // Création des genres
+    Genre* Roman = new Genre("Roman", uneEtagereDe1000Livres1);
+    Genre* Fiction = new Genre("Fiction", uneEtagereDe1000Livres2);
+
+    // Ajout des genres aux étagères
+    uneEtagereDe1000Livres1->setGenre(*Roman);
+    uneEtagereDe1000Livres2->setGenre(*Fiction);
+
+    // Création des livres et ajout aux genres
+    Livre* LesMiserables = uneBibliotheque.nouveauLivre("Les Miserables - Victor Hugo", "Roman");
+    Livre* LesFleursDuMal = uneBibliotheque.nouveauLivre("Les Fleurs Du Mal - Baudelaire", "Roman");
+    Livre* Odysse2001 = uneBibliotheque.nouveauLivre("2001 L'Odyssey - Kubrick", "Fiction");
+    Livre* Livre1984 = uneBibliotheque.nouveauLivre("1984 - George Orwell", "Fiction");
+
+
+    // Placement des livres dans leurs genres
+    Roman->placeLivre(*LesMiserables);
+    Roman->placeLivre(*LesFleursDuMal);
+    Fiction->placeLivre(*Odysse2001);
+    Fiction->placeLivre(*Livre1984);
+
+    // Affichage des livres dans les genres
+    std::cout << "Livres dans le genre Roman : \n" << Roman->meslivres();
+    std::cout << "Livres dans le genre Fiction : \n" << Fiction->meslivres();
+
+    // Affichage des genres dans les étagères
+    std::cout << uneEtagereDe1000Livres1->mesGenres();
+    std::cout << uneEtagereDe1000Livres2->mesGenres();
+
+    return 0;
+}
+*/
